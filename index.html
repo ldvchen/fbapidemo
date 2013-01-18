@@ -13,12 +13,12 @@
 <body class="impress-not-supported">
 
 <div id="impress">
-    <div id="intro" class="step" data-x="1000" data-y="0" data-scale="2.5">
+    <div id="intro" class="step" data-x="1000" data-y="0" data-scale="2.5" data-transition-duration="200">
         <h1>facebook api</h1>
         <h2>ways to bootstrap your hack</h2>
         <div class="arrow_box"></div>
         <div class="profile">
-            <img src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" />
+            <img src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" class="pic" />
             <div class="tb">
                 <div class="tc">
                     <p><b><a href="http://www.fb.me/luchen">Lu Chen</a> (DMD '11)</b></p>
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="profile">
-                <img src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" />
+                <img src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" class="pic" />
                 <div class="tb">
                     <div class="tc">
                         <p><b><a href="http://www.fb.me/ryandm">Ryan Menezes</a> (CIS '11)</b></p>
@@ -38,18 +38,18 @@
                 </p>
             </div>
 
-            <div id="integration" class="step" data-x="6000" data-y="0" data-scale="5">
+            <div id="integration" class="step" data-x="6000" data-y="0" data-scale="5" data-transition-duration="200">
                 <h1 class="fb center">what might help my hack?</h1>
                 <h2 class="fb center">let's go over a few tools at your disposal...</h2>
             </div>
 
-            <div id="fb-login" class="step" data-x="8000" data-y="-1200" data-rotate="20" data-scale="2.5">
+            <div id="fb-login" class="step" data-x="8000" data-y="-1200" data-rotate="20" data-scale="2.5" data-transition-duration="200">
                 <h1 class="fb center">facebook login</h1>
                 <p class="center">Don't waste precious hack time by writing<br /> a login system from scratch.</p>
             </div>
 
-            <div id="supported-sdk" class="step" data-x="8750" data-y="-2500" data-rotate="110" data-scale="2.3">
-                <h1 class="center">We have libraries for nearly all platforms and languages, making it easy to use Facebook Login within your app.</h1>
+            <div id="supported-sdk" class="step" data-x="8750" data-y="-2500" data-rotate="110" data-scale="2.3" data-transition-duration="200">
+                <h1 class="center">We have libraries for nearly all platforms and languages, making it easy to use Facebook (and FB Login) within your app.</h1>
                 <div class="icons">
                     <img src="images/android.png" />
                     <img src="images/ios.png" />
@@ -63,30 +63,26 @@
                 <p class="center">We're using the <span class="accent-yellow">Javascript SDK</span> in this presentation.</p>
             </div>
 
-            <div id="login-example" class="step" data-x="7950" data-y="-2850" data-scale="0.3" data-rotate="110">
+            <div id="login-example" class="step" data-x="7950" data-y="-2850" data-scale="0.3" data-rotate="110" data-transition-duration="200">
                 <div class="content">
                     <div id="login-demo-logged-out">
                         <h1>Logged Out View</h1>
                         <p>Show a logged in button since the user is not identified:</p>
                         <div class="fb-login-button" scope="user_events,user_actions.music"></div>
-                        <p>
-                            When the "logged in state" of the user changes (such as going from not logged in -> logged in), a JS function that you write is called. In this demo, that JS function fades
-                            out this box and fades in the "logged in" box below.
-                        </p>
+                        <p>Show the FB Login button if the user is logged out.</p>
                     </div>
                     <div id="login-demo-logged-in">
                         <h1>Logged In View</h1>
                         <p>The user is logged in! You can immediately access
-                        the user's unique id and profile pic. Persist the uid
-                        in your backend to identify a returning user.</p>
+                        the user's unique id and profile pic. You can save this uid in
+                        your backend to be able to identify a returning user.</p>
                         <p><img id="profilePic" /></p>
                         <p id="uniqueUserId"></p>
-                        <p>Want to log out? Uninstall the app <a href="http://facebook.com/editapps.php">here</a>.</p>
                     </div>
                 </div>
             </div>
 
-            <div id="graph" class="step" data-x="5250" data-y="1700" data-scale="4" data-rotate="-20">
+            <div id="graph" class="step" data-x="5250" data-y="1700" data-scale="4" data-rotate="-20" data-transition-duration="200">
                 <h1 class="fb center">the "graph"</h1>
                 <p>Why create fake data to put in your app when you can use the real stuff instead?</p>
                 <p class="smaller"><span class="accent-yellow-light">Read from the graph:</span> newsfeed, check-ins, photos, music listens, messages, events, liked movies/books/sports, friends (and more)</p>
@@ -95,9 +91,9 @@
             </div>
 
 
-            <div id="event-attendees" class="step" data-x="8250" data-y="1300" data-rotate="-30" data-scale="3">
+            <div id="event-attendees" class="step" data-x="8250" data-y="1300" data-rotate="-30" data-scale="3" data-transition-duration="200">
                 <div class="tb"><div class="node">
-                    <p>Demo: <b>Attendees of an Event</b></p>
+                    <p>Demo: <b>Attendees of the PennApps FB event</b></p>
 
                     <!-- TODO(ryandm): we should also add this link
                     https://developers.facebook.com/tools/explorer?method=GET&path=314881508624057%3Ffields%3Dattending.fields(picture%2Cname)
@@ -111,6 +107,7 @@
      * be sure user_events is in your access token!
      */
   });</pre>
+
                     <div id="event-attendees-results" class="results"></div>
                     <script>
                       var returnIsErrorAndAlertIfNeeded = function(response) {
@@ -153,7 +150,7 @@
             </div>
 
 
-            <div id="music-listens" class="step" data-x="6650" data-y="3725" data-scale="3">
+            <div id="music-listens" class="step" data-x="6650" data-y="3725" data-scale="3" data-transition-duration="200">
                 <div class="tb"><div class="node">
                     <p>Demo: <b>Recent Music Listens</b></p>
 
@@ -188,7 +185,7 @@
 
 
 
-            <div id="friends-likes" class="step" data-x="2750" data-y="1725" data-scale="2" data-rotate="20">
+            <div id="friends-likes" class="step" data-x="2750" data-y="1725" data-scale="2" data-rotate="20" data-transition-duration="200">
                 <div class="tb"><div class="node">
                     <p>Demo: <b>Publish to Profile</b></p>
 
@@ -199,37 +196,46 @@
             </div>
 
 
-            <div id="plugins" class="step" data-x="3900" data-y="-1200" data-scale="3">
-                <h1 class="fl">plugins</h1>
+            <div id="plugins" class="step" data-x="3900" data-y="-1200" data-scale="3" data-transition-duration="200">
+                <div style="width: 350px" class="fl">
+                <h1>plugins</h1>
+                <h2>copy and paste widgets for easy interaction</h2>
+              </div>
                 <div class="fb-comments" data-href="http://ldvchen.github.com/fbapidemo" data-width="470" data-num-posts="8"></div>
             </div>
 
-             <div id="notifs" class="step" data-x="3900" data-y="-2500" data-scale="3">
+             <div id="notifs" class="step" data-x="3900" data-y="-2500" data-scale="3" data-transition-duration="200">
                 <h1 class="center">notifications</h1>
+                <h2 class="center">alert users via Facebook notifications <span class="accent-yellow-light" style="font-size: 14px">just don't spam plz</span></h2>
                 <img src="images/notif.png" />
             </div>
 
-            <div id="summary" class="step" data-x="-6000" data-y="2500" data-scale="12">
+            <div id="summary" class="step" data-x="-6000" data-y="2500" data-scale="12" data-transition-duration="200">
                 <h1>tldr;</h1>
-                <p>Facebook Login = easy login system</p>
-                <p>Graph API = use real data in your app</p>
-                <p>Notifications + Plugins = other ways to integrate</p>
+                <p><b class="accent-yellow">Facebook Login</b> = easily rig up a login system</p>
+                <p><b class="accent-yellow">Graph API</b> = get real data (judges can actually try your app!)</p>
+                <p><b class="accent-yellow">Notifications + Plugins</b> = other ways to leverage Facebook</p>
             </div>
 
 
-            <div id="summary2" class="step" data-x="-6000" data-y="-2500" data-scale="12">
+            <div id="summary2" class="step" data-x="-6000" data-y="-2500" data-scale="12" data-transition-duration="200">
 
                 <h1>p.s.</h1>
-                <p>we're sponsoring a $500 prize for "Best Social Integration"</p>
+                <p>FB is sponsoring a <b class="accent-yellow">$500 prize for "Best Social Integration"</b></p>
 
                 <p>We'll be here for the entire PennApps event. Come find us and we'd love to give you 1:1 help with your FB (and non-FB) apps!</p>
 
-                <p><span class="accent-yellow">luchen@fb.com</span> &middot; <span class="accent-yellow">ryandm@fb.com</span></p>
+                <div style="margin-top: 20px; text-align: center">
+                <img src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" class="pic" />
+               <img src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" class="pic" />
+
+                <p class="emails"><span class="accent-yellow">luchen@fb.com</span> &middot; <span class="accent-yellow">ryandm@fb.com</span></p>
+              </div>
             </div>
         </div>
 
         <div id="follow-along">
-          This live demo is at <b class="accent-yellow">git.to/fbdemo</b> &mdash; Source at <b class="accent-yellow">git.to/fbdemosource</b>
+          This demo's source code is at <b class="accent-yellow">git.to/fbdemosource</b>
       </div>
 
       <script src="impress.js/js/impress.js"></script>

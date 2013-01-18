@@ -247,16 +247,30 @@ li {
 .node .code {
   font-family: 'Courier New';
   padding: 15px;
-  border: 1px solid black;
-  width: 90%;
-  font-size: 12px;
+  color: black;
+  font-size: 20px;
   text-align: left;
+  width: 70%;
+  margin: 20px;
 }
 
 #plugins .fb-comments {
   float: right;
   max-width: 480px;
   background-color: #FFF;
+}
+
+#notifs h2,
+#plugins h2 {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+div.results {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 170px;
+  overflow: auto;
 }
 
 #plugins h1 {
@@ -266,6 +280,18 @@ li {
 #notifs img {
   margin: 30px auto;
   display: block;
+}
+
+#summary2 img.pic {
+  border-radius: 10px;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+#summary2 .emails {
+  font-size: 24px;
 }
 
 
