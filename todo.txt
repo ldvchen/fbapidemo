@@ -1,14 +1,11 @@
-- analytics [rm]
 - link + download image icons
 - ^ if there is time, add CSS rotation animation to those icons
 
 LOGIN
-x refine login demo [rm]
-x remember to fetch basic user info [rm]
 - add a link to the quickstart page from the workshop [rm]
 
 DEMOS
-- do all three (show graph query, sh ow response, show formatted output) [rm]
+- post to wall [rm]
 
 ICON TO DOCS
 - float something in the corner
