@@ -82,10 +82,11 @@
                     </div>
                     <div id="login-demo-logged-in">
                         <h1>Logged In View</h1>
-                        <p>The user is logged in! You can access the user's unique user ID, name and profile pic. Persist the uid in your backend to
-                        identify a returning user.
-                        </p>
-                        <div id="login-demo-details"></div>
+                        <p>The user is logged in! You can immediately access
+                        the user's unique id and profile pic. Persist the uid
+                        in your backend to identify a returning user.</p>
+                        <p><img id="profilePic" /></p>
+                        <p id="uniqueUserId"></p>
                         <p>Want to log out? Uninstall the app <a href="http://facebook.com/editapps.php">here</a>.</p>
                     </div>
                 </div>
@@ -160,19 +161,26 @@
       <div id="fb-root"></div>
       <script>
         window.fbAsyncInit = function() {
-          var updateHtmlBasedOnLoginStatus = function(isLoggedIntoFacebookAndHasAuthorizedOurApp) {
+          var updateHtmlBasedOnLoginStatus = function(isLoggedIntoFacebookAndHasAuthorizedOurApp, response) {
+            var authd = isLoggedIntoFacebookAndHasAuthorizedOurApp;
             var setActive = function(elemId, isActive) {
               var elem = document.getElementById(elemId);
               elem.className = elem.className.replace(/\bactive\b/g, ' ').replace(/ +/g, ' ').trim();
               if (isActive)
                 elem.className += ' active';
             };
-            setActive('login-demo-logged-in', isLoggedIntoFacebookAndHasAuthorizedOurApp);
-            setActive('login-demo-logged-out', !isLoggedIntoFacebookAndHasAuthorizedOurApp);
+            setActive('login-demo-logged-in', authd);
+            setActive('login-demo-logged-out', !authd);
+            var setProfilePic = function(imgElem, userId) {
+              imgElem.src = 'http://graph.facebook.com/' + userId + '/picture?type=square';
+              return imgElem;
+            };
+            setProfilePic(document.getElementById('profilePic'), authd ? response.authResponse.userID : 1);
+            document.getElementById('uniqueUserId').innerText = "uid: " + (authd ? response.authResponse.userID : 'unknown');
           };
-          updateHtmlBasedOnLoginStatus(false);
+          updateHtmlBasedOnLoginStatus(false, {});
           FB.Event.subscribe('auth.authResponseChange', function(response) {
-            updateHtmlBasedOnLoginStatus(response.status === "connected");
+            updateHtmlBasedOnLoginStatus(response.status === "connected", response);
           });
           FB.init({
             appId      : '410001752413776', // App ID

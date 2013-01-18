@@ -5,8 +5,8 @@
 - ^ if there is time, add CSS rotation animation to those icons
 
 LOGIN
-- refine login demo [rm]
-- remember to fetch basic user info [rm]
+x refine login demo [rm]
+x remember to fetch basic user info [rm]
 - add a link to the quickstart page from the workshop [rm]
 
 GRAPH
