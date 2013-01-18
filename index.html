@@ -12,36 +12,30 @@
 </head>
 <body class="impress-not-supported">
 
-<!--
-    For example this fallback message is only visible when there is `impress-not-supported` class on body.
--->
-<div class="fallback-message" style="display: none">
-    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
-</div>
-
 <div id="impress">
-    <div id="title" class="step" data-x="1000" data-y="0" data-scale="2.5">
-        <h1 class="fb">facebook api</h1>
-        <h2 class="fb">ways to bootstrap your hack</h2>
+    <div id="intro" class="step" data-x="1000" data-y="0" data-scale="2.5">
+        <h1>facebook api</h1>
+        <h2>ways to bootstrap your hack</h2>
         <div class="arrow_box"></div>
         <div class="profile">
-            <img class="pic" src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" />
+            <img src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" />
             <div class="tb">
                 <div class="tc">
-                    <p class="light"><b>Lu Chen (DMD '11)</b></p>
-                    <p class="light"> Software Engineer on Timeline &amp; Platform</p></div>
+                    <p><b><a href="http://www.fb.me/luchen">Lu Chen</a> (DMD '11)</b></p>
+                    <p> Software Engineer on Timeline &amp; Platform</p></div>
                 </div>
             </div>
             <div class="profile">
-                <img class="pic" src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" />
+                <img src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" />
                 <div class="tb">
                     <div class="tc">
-                        <p class="light"><b>Ryan Menezes (CIS '11)</b></p>
-                        <p class="light">Software Engineer on Messages Infrastructure</p></div>
+                        <p><b><a href="http://www.fb.me/ryandm">Ryan Menezes</a> (CIS '11)</b></p>
+                        <p>Software Engineer on Messages Infrastructure</p></div>
                     </div>
                 </div>
-                <p class="fact light center">fun fact: we both participated in PennApps while at Penn and won third place for our app "Decider"</p>
+                <p class="fact light center">
+                    fun fact: we both participated in PennApps while at Penn and won third place for our app "Decider"
+                </p>
             </div>
 
             <div id="integration" class="step" data-x="6000" data-y="0" data-scale="5">
@@ -57,19 +51,19 @@
             <div id="supported-sdk" class="step" data-x="8750" data-y="-2500" data-rotate="110" data-scale="2.3">
                 <h1 class="center">We have libraries for nearly all platforms and languages, making it easy to use Facebook Login within your app.</h1>
                 <div class="icons">
-                    <img src="http://cdn1.iconfinder.com/data/icons/nounproject/512/411.png" class="platform" />
-                    <img src="http://aux.iconpedia.net/uploads/17209831951787883743.png" class="platform" />
-                    <img src="http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Devices-computer-laptop-icon.png" class="platform" />
+                    <img src="images/android.png" />
+                    <img src="images/ios.png" />
+                    <img src="images/desktop.png" />
                     <br />
-                    <img src="http://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" class="platform" />
-                    <img src="http://camelot.mssm.edu/~acharya/images/python_logo_transparent.png" class="platform" />
-                    <img src="http://upload.wikimedia.org/wikipedia/commons/f/f1/Ruby_logo.png" class="platform" />
-                    <img src="http://www.gauntface.co.uk/blog/wp-content/uploads/2012/03/nodejs_logo.png.scaled500.png" class="platform" />
+                    <img src="images/php.png" />
+                        <img src="images/python.png" />
+                    <img src="images/ruby.png" />
+                    <img src="images/node.png" />
                 </div>
-                <p class="center">We're using the Javascript SDK in this presentation for <br />the demos. Let's dive into an example!</p>
+                <p class="center">We're using the <span class="accent-yellow">Javascript SDK</span> in this presentation.</p>
             </div>
 
-            <div id="login-example" class="step" data-x="8250" data-y="-2750" data-scale="0.3" data-rotate="110">
+            <div id="login-example" class="step" data-x="7950" data-y="-2850" data-scale="0.3" data-rotate="110">
                 <div class="content">
                     <div id="login-demo-logged-out">
                         <h1>Logged Out View</h1>
@@ -94,9 +88,10 @@
 
             <div id="graph" class="step" data-x="5250" data-y="1700" data-scale="4" data-rotate="-20">
                 <h1 class="fb center">the "graph"</h1>
-                <p>Read <i>and</i> write access.</p>
-                <p>
-                    If your hack is "social" or would benefit from user information, use the Graph API to fetch that data (rather than asking your users to re-enter that info).</p>
+                <p>Why create fake data to put in your app when you can use the real stuff instead?</p>
+                <p class="smaller"><span class="accent-yellow-light">Read from the graph:</span> newsfeed, check-ins, photos, music listens, messages, events, liked movies/books/sports, friends (and more)</p>
+                <p class="smaller"><span class="accent-yellow-light">Write to the graph:</span> make status updates, upload photos and videos, add a check-in, create events (and more)</p>
+
             </div>
 
 
@@ -170,20 +165,32 @@
             </div>
 
 
-            <div id="others" class="step" data-x="3900" data-y="-1200" data-rotate="-10" data-scale="3">
-                <h1 class="fb">notifications</h1>
-                <h1 class="fb">+ plugins</h1>
-                <p>These might also be useful for your app.</p>
+            <div id="plugins" class="step" data-x="3900" data-y="-1200" data-scale="3">
+                <h1 class="fl">plugins</h1>
+                <div class="fb-comments" data-href="http://ldvchen.github.com/fbapidemo" data-width="470" data-num-posts="8"></div>
+            </div>
 
+             <div id="notifs" class="step" data-x="3900" data-y="-2500" data-scale="3">
+                <h1 class="center">notifications</h1>
                 <img src="images/notif.png" />
             </div>
 
             <div id="summary" class="step" data-x="-6000" data-y="2500" data-scale="12">
-                <h1 class="fb">so...</h1>
-                <p>Facebook Login, Graph API, etc = quick way to login system and real user data for your app</p>
-                <p>we're sponsoring a "most social" app $___ prize</p>
+                <h1>tldr;</h1>
+                <p>Facebook Login = easy login system</p>
+                <p>Graph API = use real data in your app</p>
+                <p>Notifications + Plugins = other ways to integrate</p>
+            </div>
 
-                <p>come find us, we're here for all of PennApps. Happy to provide you 1:1 help for your app.</p>
+
+            <div id="summary2" class="step" data-x="-6000" data-y="-2500" data-scale="12">
+
+                <h1>p.s.</h1>
+                <p>we're sponsoring a $500 prize for "Best Social Integration"</p>
+
+                <p>We'll be here for the entire PennApps event. Come find us and we'd love to give you 1:1 help with your FB (and non-FB) apps!</p>
+
+                <p><span class="accent-yellow">luchen@fb.com</span> &middot; <span class="accent-yellow">ryandm@fb.com</span></p>
             </div>
         </div>
 

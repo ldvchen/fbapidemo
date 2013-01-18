@@ -1,6 +1,4 @@
 - analytics [rm]
-- link names to our fb profiles
-- drop shadow important titles
 - link + download image icons
 - ^ if there is time, add CSS rotation animation to those icons
 
@@ -9,25 +7,11 @@ x refine login demo [rm]
 x remember to fetch basic user info [rm]
 - add a link to the quickstart page from the workshop [rm]
 
-GRAPH
-- talk about write access (maybe)
-- plug getting real user data
-- plug letting judges user that app on their own data
-
 DEMOS
 - do all three (show graph query, sh ow response, show formatted output) [rm]
 
-
-PLUGINS
-- add live comments plugin
-
 ICON TO DOCS
 - float something in the corner
-
-OVERVIEW
-- fix the copy
-- confirm prize amount
-- add emails
 
 GENERAL
 - clean up code

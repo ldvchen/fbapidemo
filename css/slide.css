@@ -12,10 +12,11 @@ p {
   line-height: 1.3;
 }
 
-.light {
-  color: #9CAEE2;
+p.smaller {
+  font-size: 22px;
+  width: 80%;
+  margin: 25px auto;
 }
-
 
 .blue-mid {
   color: #5A6EA9;
@@ -83,11 +84,15 @@ li {
 
 #follow-along b {
   letter-spacing: 0.1em;
+  padding: 0 0.2em;
 }
 
 
 
-#title img.pic {
+
+/* Intro Slide */
+
+#intro img {
   border-radius: 10px;
   width: 120px;
   height: 120px;
@@ -95,22 +100,24 @@ li {
   float: left;
 }
 
-#title .profile {
+
+#intro .profile {
   margin-top: 35px;
   font-size: 25px;
   display: block;
 }
 
-#title .profile p {
+#intro .profile p {
   margin: 0;
   line-height: 1.5;
 }
 
-#title .profile .tb {
+#intro .profile .tb {
   height: 120px;
 }
 
-#title .fact {
+
+#intro .fact {
   font-size: 15px;
   font-style: italic;
   margin-top: 25px;
@@ -140,6 +147,7 @@ li {
   left: 50%;
   margin-left: -30px;
 }
+
 .arrow_box:before {
   border-color: rgba(156, 174, 226, 0);
   border-top-color: #9CAEE2;
@@ -150,6 +158,8 @@ li {
 
 
 
+/* what might help my hack? */
+
 #integration h1 {
   font-size: 65px;
 }
@@ -159,13 +169,18 @@ li {
   font-size: 40px;
 }
 
+/* fb login */
+
 #fb-login h1 {
   margin-bottom: 15px;
 }
 
+
+/* sdk platforms */
+
 #supported-sdk h1 {
   font-size: 35px;
-  width: 880px;
+  width: 800px;
 }
 
 #supported-sdk .icons {
@@ -173,10 +188,13 @@ li {
   text-align: center;
 }
 
-#supported-sdk .platform {
+#supported-sdk .icons img {
   max-height: 150px;
   max-width: 150px;
 }
+
+
+/* fb login example */
 
 #login-example p {
   font-size: 18px;
@@ -208,14 +226,21 @@ li {
 }
 
 
+/* styling */
+
 .node {
-  border: 3px solid white;
+  border: 0px solid #CFD6E6;
   border-radius: 50%;
   height: 800px;
   width: 800px;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+  background-color: #CFD6E6;
+}
+
+.node p {
+  color: #000;
 }
 
 
@@ -226,6 +251,21 @@ li {
   width: 90%;
   font-size: 12px;
   text-align: left;
+}
+
+#plugins .fb-comments {
+  float: right;
+  max-width: 480px;
+  background-color: #FFF;
+}
+
+#plugins h1 {
+  font-size: 65px;
+}
+
+#notifs img {
+  margin: 30px auto;
+  display: block;
 }
 
 
@@ -241,3 +281,4 @@ li {
   color: #FFF;
   text-align: center;
 }
+
