@@ -103,10 +103,13 @@
                     https://developers.facebook.com/tools/explorer?method=GET&path=314881508624057%3Ffields%3Dattending.fields(picture%2Cname)
                     and make sure people know to add user_events to their access token
                     -->
-                    <pre class="code">FB.api(
+                    <pre class="code"><b>FB</b>.api(
   '/314881508624057?fields=attending.fields(picture,name)',
   function(response) {
-    /* handle response */
+    /* Here's where you handle the response.
+     * You can see this API call in action at git.to/attendees
+     * be sure user_events is in your access token!
+     */
   });</pre>
                     <div id="event-attendees-results" class="results"></div>
                     <script>
@@ -157,7 +160,10 @@
                     <pre class="code">FB.api(
   '/me/music.listens',
   function(response) {
-    /* handle response */
+    /* Here's where you handle the response.
+     * You can see this API call in action at git.to/listens
+     * be sure user_actions.music is in your access token!
+     */
   });</pre>
                     <div id='music-listens-results' class="results"></div>
                     <script>
