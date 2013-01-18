@@ -1,14 +1,14 @@
-- top bar: refine and register url shortener
+- top bar: add color
 - analytics
-- link names to our fb profiles
+- link names to our fb profiles [rm]
 - drop shadow important titles
-- link + download image icons
+- link + download image icons [rm]
 - ^ if there is time, add CSS rotation animation to those icons
 
 
 LOGIN
-- refine login demo
-- remember to fetch basic user info
+- refine login demo [rm]
+- remember to fetch basic user info [rm]
 
 GRAPH
 - talk about write access (maybe)
@@ -16,7 +16,7 @@ GRAPH
 - plug letting judges user that app on their own data
 
 DEMOS
-- do all three (show graph query, show response, show formatted output)
+- do all three (show graph query, sh ow response, show formatted output) [rm]
 
 
 PLUGINS
