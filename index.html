@@ -170,7 +170,7 @@
                             return;
                           var results = document.getElementById('music-listens-results');
                           results.innerText = '';
-                          for (var i = 0; i < response.data.length; i++) {
+                          for (var i = 0; i < response.data.length && i < 24; i++) {
                             FB.api('/' + response.data[i].data.song.id, function(response) {
                               if (response && response.image && response.image[0] && response.image[0].url)
                                 appendImg(results, response.image[0].url);
