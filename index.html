@@ -157,44 +157,38 @@
       <script src="impress.js/js/impress.js"></script>
       <script>impress().init();</script>
 
-
-
       <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=410001752413776";
-          fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-      window.fbAsyncInit = function() {
-        FB.getLoginStatus(function(response) {
-         var logged_out = window.document.getElementById('login-demo-logged-out');
-         var logged_in = window.document.getElementById('login-demo-logged-in');
-         var newClassName = 'active';
-         if (response.status === 'connected') {
-                // connected
-                console.log('connected');
-                logged_in.className += " " + newClassName;
-            } else if (response.status === 'not_authorized') {
-                // not_authorized
-                console.log('not connected');
-                logged_out.className += " " + newClassName;
-            } else {
-                // not_logged_in
-                console.log('not logged into FB');
-                logged_out.className += " " + newClassName;
-            }
-        });
-
-        FB.Event.subscribe('auth.authResponseChange', function(response) {
-            // TODO: This should update the page state.
-            console.log(response);
-        });
-    }
-
-    </script>
+      <script>
+        window.fbAsyncInit = function() {
+          var updateHtmlBasedOnLoginStatus = function(isLoggedIntoFacebookAndHasAuthorizedOurApp) {
+            var setActive = function(elemId, isActive) {
+              var elem = document.getElementById(elemId);
+              elem.className = elem.className.replace(/\bactive\b/g, ' ').replace(/ +/g, ' ').trim();
+              if (isActive)
+                elem.className += ' active';
+            };
+            setActive('login-demo-logged-in', isLoggedIntoFacebookAndHasAuthorizedOurApp);
+            setActive('login-demo-logged-out', !isLoggedIntoFacebookAndHasAuthorizedOurApp);
+          };
+          updateHtmlBasedOnLoginStatus(false);
+          FB.Event.subscribe('auth.authResponseChange', function(response) {
+            updateHtmlBasedOnLoginStatus(response.status === "connected");
+          });
+          FB.init({
+            appId      : '410001752413776', // App ID
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+          });
+        };
+        (function(d){
+           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           ref.parentNode.insertBefore(js, ref);
+         }(document));
+      </script>
 
 </body>
 </html>
