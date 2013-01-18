@@ -68,7 +68,7 @@
                     <div id="login-demo-logged-out">
                         <h1>Logged Out View</h1>
                         <p>Show a logged in button since the user is not identified:</p>
-                        <div class="fb-login-button"></div>
+                        <div class="fb-login-button" scope="user_events,user_actions.music"></div>
                         <p>
                             When the "logged in state" of the user changes (such as going from not logged in -> logged in), a JS function that you write is called. In this demo, that JS function fades
                             out this box and fades in the "logged in" box below.
@@ -110,6 +110,18 @@
   });</pre>
                     <div id="event-attendees-results" class="results"></div>
                     <script>
+                      var returnIsErrorAndAlertIfNeeded = function(response) {
+                        var isError = !response || response.error;
+                        if (isError)
+                          alert('FB.api failed, must be demoitis :(');
+                        return isError;
+                      };
+                      var appendImg = function(elem, src) {
+                        var pic = document.createElement('img');
+                        pic.src = src;
+                        pic.width = 50;
+                        elem.appendChild(pic);
+                      };
                       var fillAttendeesOfPennApps = function() {
                         /* You can find out the id of any event by loading all the user's events.
                            I found PennApps's id by going to:
@@ -117,10 +129,8 @@
                            !!! make sure you add user_events to your access token !!!
                         */
                         FB.api('/314881508624057?fields=attending.fields(picture,name)', function(response) {
-                          if (!response || response.error) {
-                            alert('event prefilling failed, must be demoitis :(');
+                          if (returnIsErrorAndAlertIfNeeded(response))
                             return;
-                          }
                           var results = document.getElementById('event-attendees-results');
                           results.innerText = '';
                           var attendees = response.attending.data;
@@ -130,9 +140,7 @@
                             if (person.picture.data.is_silhouette)
                               continue;
                             numAdded++;
-                            var pic = document.createElement('img');
-                            pic.src = person.picture.data.url;
-                            results.appendChild(pic);
+                            appendImg(results, person.picture.data.url);
                           }
                         });
                       };
@@ -146,8 +154,28 @@
                 <div class="tb"><div class="node">
                     <p>Demo: <b>Recent Music Listens</b></p>
 
-                    <div class="code">foobar</div>
-                    <div class="results"></div>
+                    <pre class="code">FB.api(
+  '/me/music.listens',
+  function(response) {
+    /* handle response */
+  });</pre>
+                    <div id='music-listens-results' class="results"></div>
+                    <script>
+                      var fillMusicListens = function() {
+                        FB.api('/me/music.listens', function(response) {
+                          if (returnIsErrorAndAlertIfNeeded(response))
+                            return;
+                          var results = document.getElementById('music-listens-results');
+                          results.innerText = '';
+                          for (var i = 0; i < response.data.length; i++) {
+                            FB.api('/' + response.data[i].data.song.id, function(response) {
+                              if (response && response.image && response.image[0] && response.image[0].url)
+                                appendImg(results, response.image[0].url);
+                            });
+                          }
+                        });
+                      };
+                    </script>
 
                 </div></div>
             </div>
@@ -222,6 +250,7 @@
             document.getElementById('uniqueUserId').innerText = "uid: " + (authd ? response.authResponse.userID : 'unknown');
             if (authd) {
               fillAttendeesOfPennApps();
+              fillMusicListens();
             } else {
               var results = document.getElementsByClassName('results');
               for (var i = 0; i < results.length; i++) {
