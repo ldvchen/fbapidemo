@@ -104,8 +104,44 @@
                 <div class="tb"><div class="node">
                     <p>Demo: <b>Attendees of an Event</b></p>
 
-                    <div class="code">foobar</div>
-                    <div class="results"></div>
+                    <!-- TODO(ryandm): we should also add this link
+                    https://developers.facebook.com/tools/explorer?method=GET&path=314881508624057%3Ffields%3Dattending.fields(picture%2Cname)
+                    and make sure people know to add user_events to their access token
+                    -->
+                    <pre class="code">FB.api(
+  '/314881508624057?fields=attending.fields(picture,name)',
+  function(response) {
+    /* handle response */
+  });</pre>
+                    <div id="event-attendees-results" class="results"></div>
+                    <script>
+                      var fillAttendeesOfPennApps = function() {
+                        /* You can find out the id of any event by loading all the user's events.
+                           I found PennApps's id by going to:
+                           https://developers.facebook.com/tools/explorer?method=GET&path=me%2Fevents
+                           !!! make sure you add user_events to your access token !!!
+                        */
+                        FB.api('/314881508624057?fields=attending.fields(picture,name)', function(response) {
+                          if (!response || response.error) {
+                            alert('event prefilling failed, must be demoitis :(');
+                            return;
+                          }
+                          var results = document.getElementById('event-attendees-results');
+                          results.innerText = '';
+                          var attendees = response.attending.data;
+                          var numAdded = 0;
+                          for (var i = 0; numAdded < 60 && i < attendees.length; i++) {
+                            var person = attendees[i];
+                            if (person.picture.data.is_silhouette)
+                              continue;
+                            numAdded++;
+                            var pic = document.createElement('img');
+                            pic.src = person.picture.data.url;
+                            results.appendChild(pic);
+                          }
+                        });
+                      };
+                    </script>
 
                 </div></div>
             </div>
@@ -177,6 +213,14 @@
             };
             setProfilePic(document.getElementById('profilePic'), authd ? response.authResponse.userID : 1);
             document.getElementById('uniqueUserId').innerText = "uid: " + (authd ? response.authResponse.userID : 'unknown');
+            if (authd) {
+              fillAttendeesOfPennApps();
+            } else {
+              var results = document.getElementsByClassName('results');
+              for (var i = 0; i < results.length; i++) {
+                results[i].innerText = 'Log in to see results!';
+              }
+            }
           };
           updateHtmlBasedOnLoginStatus(false, {});
           FB.Event.subscribe('auth.authResponseChange', function(response) {
