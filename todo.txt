@@ -1,8 +1,7 @@
-- top bar: add color
-- analytics
-- link names to our fb profiles [rm]
+- analytics [rm]
+- link names to our fb profiles
 - drop shadow important titles
-- link + download image icons [rm]
+- link + download image icons
 - ^ if there is time, add CSS rotation animation to those icons
 
 

@@ -3,7 +3,6 @@
   padding: 40px;
   margin: 20px auto;
   padding-top: 80px;
-/*  border: 1px solid white; */
 }
 
 p {
@@ -15,6 +14,27 @@ p {
 
 .light {
   color: #9CAEE2;
+}
+
+
+.blue-mid {
+  color: #5A6EA9;
+}
+
+.blue-light {
+  color: #CFD6E6;
+}
+
+.blue-dark {
+  color: #2D438A;
+}
+
+.accent-yellow {
+  color: #F6B900;
+}
+
+.accent-yellow-light {
+  color: #F9E794;
 }
 
 .tb {
@@ -39,13 +59,13 @@ p {
   float: right;
 }
 
-h1.fb {
+h1 {
   font-size: 96px;
   color: #FFF;
   font-weight: bold;
 }
 
-h2.fb {
+h2 {
   font-size: 48px;
   color: #9CAEE2;
   font-weight: bold;
@@ -60,6 +80,10 @@ li {
   color: #9CAEE2;
 }
 
+
+#follow-along b {
+  letter-spacing: 0.1em;
+}
 
 
 
