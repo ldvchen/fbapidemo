@@ -1,268 +1,490 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=1024" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="css/impress-demo-test.css" rel="stylesheet" />
-    <link href="css/slide.css" rel="stylesheet" />
-    <title>Facebook API for Hackathons</title>
-    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="favicon.png" />
+
+  <title>Facebook API for Hackathons</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1024" />
+
+  <link href="css/basic-styles.css" rel="stylesheet" />
+  <link href="css/slide.css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="favicon.ico" />
 </head>
-<body class="impress-not-supported">
+<body>
 
-<div id="impress">
-    <div id="intro" class="step" data-x="1000" data-y="0" data-scale="2.5" data-transition-duration="200">
-        <h1>facebook api</h1>
-        <h2>ways to bootstrap your hack</h2>
-        <div class="arrow_box"></div>
-        <div class="profile">
-            <img src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" class="pic" />
-            <div class="tb">
-                <div class="tc">
-                    <p><b><a href="http://www.fb.me/luchen">Lu Chen</a> (DMD '11)</b></p>
-                    <p> Software Engineer on Timeline &amp; Platform</p></div>
-                </div>
-            </div>
-            <div class="profile">
-                <img src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" class="pic" />
-                <div class="tb">
-                    <div class="tc">
-                        <p><b><a href="http://www.fb.me/ryandm">Ryan Menezes</a> (CIS '11)</b></p>
-                        <p>Software Engineer on Messages Infrastructure</p></div>
-                    </div>
-                </div>
-                <p class="fact light center">
-                    fun fact: we both participated in PennApps while at Penn and won third place for our app "Decider"
-                </p>
-            </div>
+  <!-- This contains all the slides -->
+  <div id="impress">
 
-            <div id="integration" class="step" data-x="6000" data-y="0" data-scale="5" data-transition-duration="200">
-                <h1 class="fb center">what might help my hack?</h1>
-                <h2 class="fb center">let's go over a few tools at your disposal...</h2>
-            </div>
+    <!-- (1) intro slide -->
+    <div
+      id="intro"
+      class="step"
+      data-x="1000"
+      data-y="0"
+      data-scale="2.5"
+      data-transition-duration="200">
+      <h1>facebook api</h1>
+      <h2>ways to bootstrap your hack</h2>
+      <div class="arrow_box"></div>
 
-            <div id="fb-login" class="step" data-x="8000" data-y="-1200" data-rotate="20" data-scale="2.5" data-transition-duration="200">
-                <h1 class="fb center">facebook login</h1>
-                <p class="center">Don't waste precious hack time by writing<br /> a login system from scratch.</p>
-            </div>
+      <!-- Lu's profile -->
+      <div class="profile">
+        <img src="https://graph.facebook.com/luchen/picture?width=200&amp;height=200" />
+        <div class="table">
+          <div class="table-cell-valign">
+            <p><a href="http://www.fb.me/luchen">Lu Chen</a> (DMD '11)</p>
+            <p>Software Engineer on Timeline &amp; Platform</p>
+          </div>
+        </div>
+      </div>
 
-            <div id="supported-sdk" class="step" data-x="8750" data-y="-2500" data-rotate="110" data-scale="2.3" data-transition-duration="200">
-                <h1 class="center">We have libraries for nearly all platforms and languages, making it easy to use Facebook (and FB Login) within your app.</h1>
-                <div class="icons">
-                    <img src="images/android.png" />
-                    <img src="images/ios.png" />
-                    <img src="images/desktop.png" />
-                    <br />
-                    <img src="images/php.png" />
-                        <img src="images/python.png" />
-                    <img src="images/ruby.png" />
-                    <img src="images/node.png" />
-                </div>
-                <p class="center">We're using the <span class="accent-yellow">Javascript SDK</span> in this presentation.</p>
-            </div>
+      <!-- Ryan's profile -->
+      <div class="profile">
+        <img src="https://graph.facebook.com/ryandm/picture?width=200&amp;height=200" />
+        <div class="table">
+          <div class="table-cell-valign">
+            <p><a href="http://www.fb.me/ryandm">Ryan Menezes</a> (CIS '11)</p>
+            <p>Software Engineer on Messages Infrastructure</p>
+          </div>
+        </div>
+      </div>
+      <p class="fact light center">
+        fun fact: we both participated in PennApps while at Penn and won
+        third place for our app "Decider"
+      </p>
+    </div>
 
-            <div id="login-example" class="step" data-x="7950" data-y="-2850" data-scale="0.3" data-rotate="110" data-transition-duration="200">
-                <div class="content">
-                    <div id="login-demo-logged-out">
-                        <h1>Logged Out View</h1>
-                        <p>Show a logged in button since the user is not identified:</p>
-                        <div class="fb-login-button" scope="user_events,user_actions.music"></div>
-                        <p>Show the FB Login button if the user is logged out.</p>
-                    </div>
-                    <div id="login-demo-logged-in">
-                        <h1>Logged In View</h1>
-                        <p>The user is logged in! You can immediately access
-                        the user's unique id and profile pic. You can save this uid in
-                        your backend to be able to identify a returning user.</p>
-                        <p><img id="profilePic" /></p>
-                        <p id="uniqueUserId"></p>
-                    </div>
-                </div>
-            </div>
+    <!-- (2) integration summary -->
+    <div
+      id="integration"
+      class="step"
+      data-x="6000"
+      data-y="0"
+      data-scale="5"
+      data-transition-duration="200">
+      <h1 class="center">what might help my hack?</h1>
+      <h2 class="center">let's go over a few tools at your disposal...</h2>
+    </div>
 
-            <div id="graph" class="step" data-x="5250" data-y="1700" data-scale="4" data-rotate="-20" data-transition-duration="200">
-                <h1 class="fb center">the "graph"</h1>
-                <p>Why create fake data to put in your app when you can use the real stuff instead?</p>
-                <p class="smaller"><span class="accent-yellow-light">Read from the graph:</span> newsfeed, check-ins, photos, music listens, messages, events, liked movies/books/sports, friends (and more)</p>
-                <p class="smaller"><span class="accent-yellow-light">Write to the graph:</span> make status updates, upload photos and videos, add a check-in, create events (and more)</p>
+    <!-- (3) fb login -->
+    <div
+      id="fb-login"
+      class="step"
+      data-x="8000"
+      data-y="-1200"
+      data-rotate="20"
+      data-scale="2.5"
+      data-transition-duration="200">
+      <h1 class="center">facebook login</h1>
+      <p class="center">
+        Don't waste precious hack time by writing
+        <br />
+        a login system from scratch.
+      </p>
+    </div>
 
-            </div>
+    <!-- (4) supported sdks -->
+    <div
+      id="supported-sdk"
+      class="step"
+      data-x="8750"
+      data-y="-2500"
+      data-rotate="110"
+      data-scale="2.3"
+      data-transition-duration="200">
+      <h1 class="center">
+        We have libraries for nearly all platforms and languages, making it
+        easy to use Facebook (and FB Login) within your app.
+      </h1>
 
+      <div class="icons">
+        <a href="https://developers.facebook.com/android/">
+          <img src="images/android.png" title="Android"/>
+        </a>
+        <a href="https://developers.facebook.com/ios/">
+          <img src="images/ios.png" title="iOS" />
+        </a>
+        <a href="https://developers.facebook.com/docs/howtos/login/login-for-desktop/">
+          <img src="images/desktop.png" title="Desktop Apps" />
+        </a>
+        <br />
+        <a href="https://developers.facebook.com/docs/reference/php/">
+          <img src="images/php.png" title="PHP SDK" />
+        </a>
+        <a href="https://developers.facebook.com/tools/third-party-sdks/">
+          <img src="images/python.png" title="Python" />
+        </a>
+        <a href="https://developers.facebook.com/tools/third-party-sdks/">
+          <img src="images/ruby.png" title="Ruby" />
+        </a>
+        <a href="https://developers.facebook.com/tools/third-party-sdks/">
+          <img src="images/node.png" title="Node.js" />
+        </a>
+      </div>
 
-            <div id="event-attendees" class="step" data-x="8250" data-y="1300" data-rotate="-30" data-scale="3" data-transition-duration="200">
-                <div class="tb"><div class="node">
-                    <p>Demo: <b>Attendees of the PennApps FB event</b></p>
+      <p class="center">
+        We're using the
+        <a href="https://developers.facebook.com/docs/reference/javascript/" class="accent-yellow-light">
+          Javascript SDK
+        </a>
+        in this presentation.
+      </p>
+    </div>
 
-                    <!-- TODO(ryandm): we should also add this link
-                    https://developers.facebook.com/tools/explorer?method=GET&path=314881508624057%3Ffields%3Dattending.fields(picture%2Cname)
-                    and make sure people know to add user_events to their access token
-                    -->
-                    <pre class="code">FB.api(
-  '/314881508624057?fields=attending.fields(picture,name)',
-  function(response) {
+    <!-- (5) login demo. Search for 'fb_login_demo_js' below to look at the JS -->
+    <div
+      id="login-example"
+      class="step"
+      data-x="7950"
+      data-y="-2850"
+      data-scale="0.3"
+      data-rotate="110"
+      data-transition-duration="200">
+
+      <!-- what to show when logged out -->
+      <div id="login-demo-logged-out">
+        <h1>Logged Out View</h1>
+        <p>
+          Show the FB Login button, since the user isn't logged in.
+        </p>
+        <div class="fb-login-button" data-scope="user_events,user_actions.music">
+        </div>
+      </div>
+
+      <!-- what to show when logged in -->
+      <div id="login-demo-logged-in">
+        <h1>Logged In View</h1>
+        <p>
+          The user is logged in! You can immediately access the current
+          user's ID and profile pic. Your app can save this ID to your
+          backend to identify returning users.
+        </p>
+
+        <div class="dynamic-info clearfix">
+          <img id="profilePic" />
+          <input type="text" id="uniqueUserId" value="not connected" />
+        </div>
+
+        <p>
+          Uninstall the app to log out:
+          <a href="http://www.facebook.com/editapps.php">
+            App Settings
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <!-- (6) graph splash -->
+    <div
+      id="graph"
+      class="step"
+      data-x="5250"
+      data-y="1700"
+      data-scale="4"
+      data-rotate="-20"
+      data-transition-duration="200">
+      <h1 class="center">the "graph"</h1>
+      <p>
+        Why create fake data to put in your app when you can use the real
+        stuff instead?
+      </p>
+      <p class="smaller">
+        <span class="accent-yellow-light">Read from the graph:</span>
+        newsfeed, check-ins, photos, music listens, messages, events, liked movies/books/sports, friends (and more)
+      </p>
+      <p class="smaller">
+        <span class="accent-yellow-light">Write to the graph:</span>
+        make status updates, upload photos and videos, add a check-in, create events (and more)
+      </p>
+    </div>
+
+    <!-- (7) event attendee demo -->
+    <div
+      id="event-attendees"
+      class="step"
+      data-x="8250"
+      data-y="1300"
+      data-rotate="-30"
+      data-scale="3"
+      data-transition-duration="200">
+      <div class="table">
+        <div class="node table-cell-valign">
+          <p>
+            Demo:
+            <strong>Attendees of the PennApps FB event</strong>
+          </p>
+          <input
+            type="button"
+            onclick="fillAttendeesOfPennApps();"
+            value="Show me attendees!"
+          />
+<pre>FB.api(
+  '<b>/314881508624057?fields=attending.fields(picture,name)</b>',
+  function(<b>response</b>) {
     /* Here's where you handle the response.
      * Be sure user_events is in your access token!
      * To inspect this call in the API explorer <a href="http://git.to/attendees" target="_blank">click here</a>.
      */
-  });</pre>
-
-                    <div id="event-attendees-results" class="results"></div>
-                    <script>
-                      var returnIsErrorAndAlertIfNeeded = function(response) {
-                        var isError = !response || response.error;
-                        if (isError)
-                          alert('FB.api failed, must be demoitis :(');
-                        return isError;
-                      };
-                      var appendImg = function(elem, src) {
-                        var pic = document.createElement('img');
-                        pic.src = src;
-                        pic.width = 50;
-                        elem.appendChild(pic);
-                      };
-                      var fillAttendeesOfPennApps = function() {
-                        /* You can find out the id of any event by loading all the user's events.
-                           I found PennApps's id by going to:
-                           https://developers.facebook.com/tools/explorer?method=GET&path=me%2Fevents
-                           !!! make sure you add user_events to your access token !!!
-                        */
-                        FB.api('/314881508624057?fields=attending.fields(picture,name)', function(response) {
-                          if (returnIsErrorAndAlertIfNeeded(response))
-                            return;
-                          var results = document.getElementById('event-attendees-results');
-                          results.innerText = '';
-                          var attendees = response.attending.data;
-                          var numAdded = 0;
-                          for (var i = 0; numAdded < 60 && i < attendees.length; i++) {
-                            var person = attendees[i];
-                            if (person.picture.data.is_silhouette)
-                              continue;
-                            numAdded++;
-                            appendImg(results, person.picture.data.url);
-                          }
-                        });
-                      };
-                    </script>
-
-                </div></div>
-            </div>
+  }
+);</pre>
+          <div id="event-attendees-results" class="results"></div>
+          <script>
+            var returnIsErrorAndAlertIfNeeded = function(response) {
+              var isError = !response || response.error;
+              if (isError)
+                alert('FB.api failed, must be demoitis :(');
+              return isError;
+            };
+            var appendImg = function(elem, src) {
+              $(elem).append($("<img>").attr({'src': src, 'width': 50}));
+            };
+            var fillAttendeesOfPennApps = function() {
+              /* You can find out the id of any event by loading all the user's events.
+                 I found PennApps's id by going to:
+                 https://developers.facebook.com/tools/explorer?method=GET&path=me%2Fevents
+                 !!! make sure you add user_events to your access token !!!
+              */
+              FB.api('/314881508624057?fields=attending.fields(picture,name)', function(response) {
+                if (returnIsErrorAndAlertIfNeeded(response))
+                  return;
+                var results = $('#event-attendees-results').html('');
+                var attendees = response.attending.data;
+                var numAdded = 0;
+                for (var i = 0; numAdded < 60 && i < attendees.length; i++) {
+                  var person = attendees[i];
+                  if (person.picture.data.is_silhouette)
+                    continue;
+                  numAdded++;
+                  appendImg(results, person.picture.data.url);
+                }
+              });
+            };
+          </script>
+        </div>
+      </div>
+    </div>
 
 
-            <div id="music-listens" class="step" data-x="6650" data-y="3725" data-scale="3" data-transition-duration="200">
-                <div class="tb"><div class="node">
-                    <p>Demo: <b>Recent Music Listens</b></p>
+    <!-- (8) music listens demo -->
+    <div
+      id="music-listens"
+      class="step"
+      data-x="6650"
+      data-y="3725"
+      data-scale="3"
+      data-transition-duration="200">
+      <div class="table">
+        <div class="node table-cell-valign">
+          <p>
+            Demo:
+            <strong>Recent Music Listens</strong>
+          </p>
+          <input
+            type="button"
+            onclick="fillMusicListens();"
+            value="Reveal my music!"
+          />
 
-                    <pre class="code">FB.api(
-  '/me/music.listens',
-  function(response) {
+<pre>FB.api(
+  '<b>/me/music.listens</b>',
+  function(<b>response</b>) {
     /* Here's where you handle the response.
      * Be sure user_actions.music is in your access token!
      * To inspect this call in the API explorer <a href="http://git.to/listens" target="_blank">click here</a>.
      */
-  });</pre>
-                    <div id='music-listens-results' class="results"></div>
-                    <script>
-                      var fillMusicListens = function() {
-                        FB.api('/me/music.listens', function(response) {
-                          if (returnIsErrorAndAlertIfNeeded(response))
-                            return;
-                          var results = document.getElementById('music-listens-results');
-                          results.innerText = '';
-                          for (var i = 0; i < response.data.length && i < 24; i++) {
-                            FB.api('/' + response.data[i].data.song.id, function(response) {
-                              if (response && response.image && response.image[0] && response.image[0].url)
-                                appendImg(results, response.image[0].url);
-                            });
-                          }
-                        });
-                      };
-                    </script>
-
-                </div></div>
-            </div>
-
-
-            <div id="plugins" class="step" data-x="3900" data-y="-1200" data-scale="3" data-transition-duration="200">
-                <div style="width: 350px" class="fl">
-                <h1>plugins</h1>
-                <h2>copy and paste widgets for easy interaction</h2>
-              </div>
-                <div class="fb-comments" data-href="http://ldvchen.github.com/fbapidemo" data-width="470" data-num-posts="4" data-order-by="reverse_time"></div>
-            </div>
-
-             <div id="notifs" class="step" data-x="3900" data-y="-2500" data-scale="3" data-transition-duration="200">
-                <h1 class="center">notifications</h1>
-                <h2 class="center">alert users via Facebook notifications <span class="accent-yellow-light" style="font-size: 14px">just don't spam plz</span></h2>
-                <img src="images/notif.png" />
-            </div>
-
-            <div id="summary" class="step" data-x="-6000" data-y="2500" data-scale="12" data-transition-duration="200">
-                <h1>tl;dr</h1>
-                <p><b class="accent-yellow">Facebook Login</b> = easily rig up a login system</p>
-                <p><b class="accent-yellow">Graph API</b> = get real data (judges can actually try your app!)</p>
-                <p><b class="accent-yellow">Notifications + Plugins</b> = other ways to leverage Facebook</p>
-
-                <h2>p.s.</h2> <p>FB is sponsoring a <b class="accent-yellow">$500 prize for "Best Social Integration"</b></p>
-            </div>
+  }
+);</pre>
+          <div id='music-listens-results' class="results"></div>
+          <script>
+            var fillMusicListens = function() {
+              FB.api('/me/music.listens', function(response) {
+                if (returnIsErrorAndAlertIfNeeded(response))
+                  return;
+                var results = $('#music-listens-results').html('');
+                for (var i = 0; i < response.data.length && i < 24; i++) {
+                  FB.api('/' + response.data[i].data.song.id, function(response) {
+                    if (response && response.image && response.image[0] && response.image[0].url)
+                      appendImg(results, response.image[0].url);
+                  });
+                }
+              });
+            };
+          </script>
         </div>
-
-        <div id="follow-along">
-          Live demo at <a href="http://git.to/fbdemo"><b class="accent-yellow">git.to/fbdemo</b></a> &mdash; Source code at <a href="http://git.to/demosource"><b class="accent-yellow">git.to/demosource</b></a>
       </div>
+    </div>
 
-      <script src="impress.js/js/impress.js"></script>
-      <script>impress().init();</script>
+    <!-- (9) facebook plugins -->
+    <div
+      id="plugins"
+      class="step"
+      data-x="3900"
+      data-y="-1200"
+      data-scale="3"
+      data-transition-duration="200">
+      <div class="caption fl">
+        <h1>plugins</h1>
+        <h2>copy and paste widgets for easy interaction</h2>
+      </div>
+      <div
+        class="fb-comments fr"
+        data-href="http://ldvchen.github.com/fbapidemo"
+        data-width="470"
+        data-num-posts="4"
+        data-order-by="reverse_time">
+      </div>
+    </div>
 
-      <div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          var updateHtmlBasedOnLoginStatus = function(isLoggedIntoFacebookAndHasAuthorizedOurApp, response) {
-            var authd = isLoggedIntoFacebookAndHasAuthorizedOurApp;
-            var setActive = function(elemId, isActive) {
-              var elem = document.getElementById(elemId);
-              elem.className = elem.className.replace(/\bactive\b/g, ' ').replace(/ +/g, ' ').trim();
-              if (isActive)
-                elem.className += ' active';
-            };
-            setActive('login-demo-logged-in', authd);
-            setActive('login-demo-logged-out', !authd);
-            var setProfilePic = function(imgElem, userId) {
-              imgElem.src = 'http://graph.facebook.com/' + userId + '/picture?type=square';
-              return imgElem;
-            };
-            setProfilePic(document.getElementById('profilePic'), authd ? response.authResponse.userID : 1);
-            document.getElementById('uniqueUserId').innerText = "uid: " + (authd ? response.authResponse.userID : 'unknown');
-            if (authd) {
-              fillAttendeesOfPennApps();
-              fillMusicListens();
-            } else {
-              var results = document.getElementsByClassName('results');
-              for (var i = 0; i < results.length; i++) {
-                results[i].innerText = 'Log in to see results!';
-              }
-            }
-          };
-          updateHtmlBasedOnLoginStatus(false, {});
-          FB.Event.subscribe('auth.authResponseChange', function(response) {
-            updateHtmlBasedOnLoginStatus(response.status === "connected", response);
-          });
-          FB.init({
-            appId      : '410001752413776', // App ID
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true  // parse XFBML
-          });
-        };
-        (function(d){
-           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           ref.parentNode.insertBefore(js, ref);
-         }(document));
-      </script>
+    <!-- (10) fb notifications api -->
+    <div
+      id="notifs"
+      class="step"
+      data-x="3900"
+      data-y="-2500"
+      data-scale="3"
+      data-transition-duration="200">
+      <h1 class="center">notifications</h1>
+      <h2 class="center">
+        alert users via Facebook notifications
+        <span class="accent-yellow-light">just don't spam plz</span>
+      </h2>
+      <img src="images/notif.png" title="Notification screenshot" />
+    </div>
 
+    <!-- (11) summary -->
+    <div
+      id="summary"
+      class="step"
+      data-x="-6000"
+      data-y="2500"
+      data-scale="12"
+      data-transition-duration="200">
+      <h1>tl;dr</h1>
+      <p>
+        <a href="https://developers.facebook.com/docs/concepts/login/">
+          <b class="accent-yellow">Facebook Login</b>
+        </a>
+        = easily rig up a login system
+      </p>
+      <p>
+        <a href="https://developers.facebook.com/docs/reference/api/">
+          <b class="accent-yellow">Graph API</b>
+        </a>
+        = get real data (judges can actually try your app!)
+      </p>
+      <p>
+        <b class="accent-yellow">
+          <a href="https://developers.facebook.com/docs/howtos/notifications-api/">
+            Notifications
+          </a>
+          +
+          <a href="https://developers.facebook.com/docs/plugins/">
+            Plugins
+          </a>
+        </b>
+        = other ways to leverage Facebook
+      </p>
+
+      <h2>p.s.</h2>
+      <p>
+        FB is sponsoring a
+        <a href="http://2013s.pennapps.com/prizes/">
+          <b class="accent-yellow">$500 prize for "Best Social Integration"</b>
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- floating bar at the top -->
+  <div id="follow-along">
+    Live demo at
+    <a href="http://git.to/fbdemo">
+      <b class="accent-yellow">git.to/fbdemo</b>
+    </a>
+    &mdash;
+    Source code at
+    <a href="http://git.to/demosource">
+      <b class="accent-yellow">git.to/demosource</b>
+    </a>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- include the impress.js and jQuery libraryes -->
+  <script src="impress.js/js/impress.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script>impress().init();</script>
+
+  <!-- Facebook API integration with Javascript API -->
+  <div id="fb-root"></div>
+  <script class="fb_login_demo_js">
+
+    // Update the page state based on if the user is logged in.
+    function update_html_from_login_state(
+      /* boolean */ user_is_logged_into_app,
+      /* json */ response) {
+
+      var authd = user_is_logged_into_app;
+      var userId = 1;
+
+      // Show or hide relevant sections.
+      if (authd) {
+        $('#login-demo-logged-out').removeClass('active');
+        $('#login-demo-logged-in').addClass('active');
+        userId = response.authResponse.userID;
+      } else {
+        $('#login-demo-logged-out').addClass('active');
+        $('#login-demo-logged-in').removeClass('active');
+      }
+
+      // Update the profile pic.
+      $('#profilePic').attr(
+        'src',
+        'http://graph.facebook.com/' + userId + '/picture?type=square'
+      );
+
+      // Update the uid field.
+      $('#uniqueUserId').val(authd ? 'uid='+userId : 'no user id');
+    };
+
+    // When the FB JS SDK is loaded, run this function.
+    window.fbAsyncInit = function() {
+      update_html_from_login_state(false, {});
+      FB.init({
+        appId      : '410001752413776', // App ID
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+      FB.Event.subscribe(
+        'auth.authResponseChange',
+        function(response) {
+          update_html_from_login_state(
+            response.status === "connected",
+            response
+          );
+        }
+      );
+    };
+
+    // Load the SDK asynchronously.
+    (function(d){
+       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement('script'); js.id = id; js.async = true;
+       js.src = "//connect.facebook.net/en_US/all.js";
+       ref.parentNode.insertBefore(js, ref);
+     }(document));
+  </script>
 </body>
 </html>
