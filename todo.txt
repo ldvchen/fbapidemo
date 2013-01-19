@@ -1,15 +1,3 @@
-- link + download image icons
-- ^ if there is time, add CSS rotation animation to those icons
+- JS variables for event
+- add CSS animation to links + things
 
-LOGIN
-- add a link to the quickstart page from the workshop [rm]
-
-DEMOS
-- post to wall [rm]
-
-ICON TO DOCS
-- float something in the corner
-
-GENERAL
-- clean up code
-- address not supported fallback mode
