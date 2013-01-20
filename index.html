@@ -9,10 +9,19 @@
 
   <link href="css/basic-styles.css" rel="stylesheet" />
   <link href="css/slide.css" rel="stylesheet" />
-  <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cabin+Condensed:400,700' rel='stylesheet' type='text/css'>
   <link rel="shortcut icon" href="favicon.ico" />
 </head>
 <body>
+  <script>
+    // To use this demo on your own, you should change these values.
+    var settings = {
+      APP_ID : '410001752413776',
+      EVENT_ID : '314881508624057'
+    };
+  </script>
+
+  <img src="images/loading.gif" class="preload" />
 
   <!-- This contains all the slides -->
   <div id="impress">
@@ -215,11 +224,6 @@
             Demo:
             <strong>Attendees of the PennApps FB event</strong>
           </p>
-          <input
-            type="button"
-            onclick="fillAttendeesOfPennApps();"
-            value="Show me attendees!"
-          />
 <pre>FB.api(
   '<b>/314881508624057?fields=attending.fields(picture,name)</b>',
   function(<b>response</b>) {
@@ -229,6 +233,11 @@
      */
   }
 );</pre>
+          <input
+            type="button"
+            onclick="fillAttendeesOfPennApps();"
+            value="Run API Call"
+          />
           <div id="event-attendees-results" class="results"></div>
           <script>
             var returnIsErrorAndAlertIfNeeded = function(response) {
@@ -246,18 +255,21 @@
                  https://developers.facebook.com/tools/explorer?method=GET&path=me%2Fevents
                  !!! make sure you add user_events to your access token !!!
               */
-              FB.api('/314881508624057?fields=attending.fields(picture,name)', function(response) {
+              $('#event-attendees-results').html('').addClass('loading');
+              FB.api('/' + settings.EVENT_ID + '?fields=attending.fields(picture,name)', function(response) {
                 if (returnIsErrorAndAlertIfNeeded(response))
                   return;
-                var results = $('#event-attendees-results').html('');
+                var results = $('#event-attendees-results').html('').removeClass('loading');
                 var attendees = response.attending.data;
                 var numAdded = 0;
                 for (var i = 0; numAdded < 60 && i < attendees.length; i++) {
                   var person = attendees[i];
-                  if (person.picture.data.is_silhouette)
+                  var picture_data = person.picture.data;
+                  if (picture_data.is_silhouette) {
                     continue;
+                  }
                   numAdded++;
-                  appendImg(results, person.picture.data.url);
+                  appendImg(results, picture_data.url);
                 }
               });
             };
@@ -281,11 +293,6 @@
             Demo:
             <strong>Recent Music Listens</strong>
           </p>
-          <input
-            type="button"
-            onclick="fillMusicListens();"
-            value="Reveal my music!"
-          />
 
 <pre>FB.api(
   '<b>/me/music.listens</b>',
@@ -296,14 +303,20 @@
      */
   }
 );</pre>
+          <input
+            type="button"
+            onclick="fillMusicListens();"
+            value="Run API Call"
+          />
           <div id='music-listens-results' class="results"></div>
           <script>
             var fillMusicListens = function() {
+              $('#music-listens-results').html('').addClass('loading');
               FB.api('/me/music.listens', function(response) {
                 if (returnIsErrorAndAlertIfNeeded(response))
                   return;
-                var results = $('#music-listens-results').html('');
-                for (var i = 0; i < response.data.length && i < 24; i++) {
+                var results = $('#music-listens-results').html('').removeClass('loading');
+                for (var i = 0; i < response.data.length && i < 22; i++) {
                   FB.api('/' + response.data[i].data.song.id, function(response) {
                     if (response && response.image && response.image[0] && response.image[0].url)
                       appendImg(results, response.image[0].url);
@@ -327,12 +340,17 @@
       <div class="caption fl">
         <h1>plugins</h1>
         <h2>copy and paste widgets for easy interaction</h2>
+
+        <h2 class="live">
+         this is live btw, not a screenshot.<br />
+         go on and add a comment &rarr;
+        </h2>
       </div>
       <div
         class="fb-comments fr"
         data-href="http://ldvchen.github.com/fbapidemo"
         data-width="470"
-        data-num-posts="4"
+        data-num-posts="3"
         data-order-by="reverse_time">
       </div>
     </div>
@@ -366,7 +384,7 @@
         <a href="https://developers.facebook.com/docs/concepts/login/">
           <b class="accent-yellow">Facebook Login</b>
         </a>
-        = easily rig up a login system
+        = quickly &amp; easily rig up a login system
       </p>
       <p>
         <a href="https://developers.facebook.com/docs/reference/api/">
@@ -461,7 +479,7 @@
     window.fbAsyncInit = function() {
       update_html_from_login_state(false, {});
       FB.init({
-        appId      : '410001752413776', // App ID
+        appId      : settings.APP_ID, // App ID
         status     : true, // check login status
         cookie     : true, // enable cookies to allow the server to access the session
         xfbml      : true  // parse XFBML
