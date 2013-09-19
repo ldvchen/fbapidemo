@@ -146,9 +146,9 @@
     <div
       id="login-example"
       class="step"
-      data-x="7950"
-      data-y="-2850"
-      data-scale="0.3"
+      data-x="7650"
+      data-y="-2900"
+      data-scale="0.6"
       data-rotate="110"
       data-transition-duration="200">
 
@@ -222,36 +222,41 @@
         <div class="node table-cell-valign">
           <p>
             Demo:
-            <strong>Attendees of the PennApps FB event</strong>
+            <strong>Attendees of the FB event</strong>
           </p>
 <pre>FB.api(
-  '<b>/314881508624057?fields=attending.fields(picture,name)</b>',
+  '<b>/<script>document.write(settings.EVENT_ID)</script>?fields=attending.fields(picture,name)</b>',
   function(<b>response</b>) {
     /* Here's where you handle the response.
      * Be sure user_events is in your access token!
-     * To inspect this call in the API explorer <a href="http://git.to/attendees" target="_blank">click here</a>.
+     * To inspect this call in the API explorer <a onclick="goAPIExplorerEvent(); return false;" href="#">click here</a>.
      */
   }
 );</pre>
           <input
             type="button"
-            onclick="fillAttendeesOfPennApps();"
+            onclick="fillAttendeesOfEvent();"
             value="Run API Call"
           />
           <div id="event-attendees-results" class="results"></div>
           <script>
+            var goAPIExplorerEvent = function() {
+              var url = 'https://developers.facebook.com/tools/explorer/?method=GET&path=' + settings.EVENT_ID +
+              '%3Ffields%3Dattending.fields(picture%2Cname)';
+              window.location.href = url;
+            };
             var returnIsErrorAndAlertIfNeeded = function(response) {
               var isError = !response || response.error;
               if (isError)
-                alert('FB.api failed, must be demoitis :(');
+                alert('FB.api failed, must be demoitis :( You installed the app, right?');
               return isError;
             };
             var appendImg = function(elem, src) {
               $(elem).append($("<img>").attr({'src': src, 'width': 50}));
             };
-            var fillAttendeesOfPennApps = function() {
+            var fillAttendeesOfEvent = function() {
               /* You can find out the id of any event by loading all the user's events.
-                 I found PennApps's id by going to:
+                 I found the event ID id by going to:
                  https://developers.facebook.com/tools/explorer?method=GET&path=me%2Fevents
                  !!! make sure you add user_events to your access token !!!
               */
@@ -299,7 +304,7 @@
   function(<b>response</b>) {
     /* Here's where you handle the response.
      * Be sure user_actions.music is in your access token!
-     * To inspect this call in the API explorer <a href="http://git.to/listens" target="_blank">click here</a>.
+     * To inspect this call in the API explorer <a href="https://developers.facebook.com/tools/explorer?method=GET&amp;path=me%2Fmusic.listens" target="_blank">click here</a>.
      */
   }
 );</pre>
